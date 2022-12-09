@@ -1,0 +1,24 @@
+
+name: Clean
+
+on:
+  repository_dispatch:
+    types: [run-another] 
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Config number'     
+        required: true
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Prepare host
+        run: |
+            df
+            sudo apt-get purge -y dotnet* gfortran gfortran* android-sdk
+            df
+            du -a / | sort -n -r | head -n 20
