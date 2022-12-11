@@ -14,5 +14,6 @@ jobs:
         run: |
             df
             sudo apt-get purge -y dotnet* gfortran gfortran* android-sdk
+            sudo rm -rf /opt/hostedtoolcache/
             df
             du -a / | sort -n -r | head -n 20
