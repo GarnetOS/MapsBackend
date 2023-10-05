@@ -30,6 +30,8 @@ jobs:
           sudo apt purge ghc
           sudo rm -rf /opt/hostedtoolcache/
           sudo rm -rf /imagegeneration
+          sudo rm -rf /usr/local/.ghcup/
+          sudo rm -rf /usr/share/swift
       - name: Get Largest
         run: |
           du -a / | sort -n -r | head -n 40
