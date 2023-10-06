@@ -17,7 +17,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
       - name: Remove
         run: |
           sudo rm -rf /opt/hostedtoolcache/ /imagegeneration /usr/local/.ghcup/ /usr/share/swift
@@ -36,6 +35,7 @@ jobs:
         run: |
           echo "Free space:"
           df -h
+      - uses: actions/checkout@v4
       - name: Get Level 1 map
         run: |
           sudo apt update
