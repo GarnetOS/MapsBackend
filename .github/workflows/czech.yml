@@ -49,4 +49,5 @@ jobs:
           sudo -u postgres pwd
           sudo -u postgres ls -l
           chmod +x createdb.sh
+          echo "postgres ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
           sudo -u postgres ./createdb.sh
