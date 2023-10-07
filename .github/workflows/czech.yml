@@ -28,6 +28,8 @@ jobs:
           remove-dotnet: 'true'
           remove-haskell: 'true'
           remove-android: 'true'
+          build-mount-path: '/'
+          pv-loop-path: '/mnt/pv.img'
       #- name: Get Largest
       #  run: |
       #    du -a / | sort -n -r | head -n 40
