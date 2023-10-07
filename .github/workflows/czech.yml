@@ -19,17 +19,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Remove
         run: |
-          sudo rm -rf /opt/hostedtoolcache/ /imagegeneration /usr/local/.ghcup/ /usr/share/swift
-      - name: Maximize build space
-        uses: easimon/maximize-build-space@master
-        with:
-          root-reserve-mb: 3072
-          swap-size-mb: 1024
-          remove-dotnet: 'true'
-          remove-haskell: 'true'
-          remove-android: 'true'
-          build-mount-path: '/'
-          pv-loop-path: '/mnt/pv.img'
+          sudo rm -rf /opt/hostedtoolcache/ /imagegeneration /usr/local/.ghcup/ /usr/share/swift /opt/ghc /usr/local/lib/android /usr/share/dotnet
+     # - name: Maximize build space
+     #   uses: easimon/maximize-build-space@master
+     #   with:
+     #     root-reserve-mb: 3072
+     #     swap-size-mb: 1024
+     #     remove-dotnet: 'true'
+     #     remove-haskell: 'true'
+     #     remove-android: 'true'
+     #     build-mount-path: '/'
+     #     pv-loop-path: '/mnt/pv.img'
       #- name: Get Largest
       #  run: |
       #    du -a / | sort -n -r | head -n 40
