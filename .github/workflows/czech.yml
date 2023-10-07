@@ -28,9 +28,9 @@ jobs:
           remove-dotnet: 'true'
           remove-haskell: 'true'
           remove-android: 'true'
-      - name: Get Largest
-        run: |
-          du -a / | sort -n -r | head -n 40
+      #- name: Get Largest
+      #  run: |
+      #    du -a / | sort -n -r | head -n 40
       - name: Check free space
         run: |
           echo "Free space:"
@@ -49,5 +49,5 @@ jobs:
           sudo -u postgres pwd
           sudo -u postgres ls -l
           chmod +x createdb.sh
-          sudo echo "postgres ALL=(ALL) NOPASSWD: ALL" >> sudo /etc/sudoers
+          su -c "echo \"postgres ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
           sudo -u postgres ./createdb.sh
