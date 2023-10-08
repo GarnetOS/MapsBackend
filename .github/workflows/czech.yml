@@ -33,6 +33,12 @@ jobs:
       #- name: Get Largest
       #  run: |
       #    du -a / | sort -n -r | head -n 40
+      - name: Install prerequisites
+        run: |
+          sudo apt update
+          sudo apt purge firefox
+          sudo apt upgrade
+          sudo apt install screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-unifont fonts-hanazono postgresql postgresql-contrib postgis postgresql-14-postgis-3 postgresql-14-postgis-3-scripts osm2pgsql net-tools curl
       - name: Check free space
         run: |
           echo "Free space:"
@@ -40,10 +46,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get Level 1 map
         run: |
-          sudo apt update
-          sudo apt purge firefox
-          sudo apt upgrade
-          sudo apt install screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-unifont fonts-hanazono postgresql postgresql-contrib postgis postgresql-14-postgis-3 postgresql-14-postgis-3-scripts osm2pgsql net-tools curl
           ls -l
           sudo usermod -aG sudo postgres
           sudo systemctl start postgresql
@@ -53,3 +55,4 @@ jobs:
           chmod +x createdb.sh
           sudo su -c "echo \"postgres ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
           sudo -u postgres ./createdb.sh
+          df -h
